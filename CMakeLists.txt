@@ -11,7 +11,7 @@ add_custom_target(coverage ALL
     DEPENDS math_operations_test
     COMMAND ctest --output-on-failure
     COMMAND ${LCOV_EXECUTABLE} --capture --directory . --output-file coverage.info
-    COMMAND ${LCOV_EXECUTABLE} --remove coverage.info '/usr/*' '*/tests/*' '*/ll*' --output-file filtered_coverage.info
+    COMMAND ${LCOV_EXECUTABLE} --remove coverage.info /usr/* */tests/* */ll* --output-file filtered_coverage.info
     COMMAND ${GENHTML_EXECUTABLE} filtered_coverage.info --output-directory coverage_report
     COMMAND ${CMAKE_COMMAND} -E echo "Coverage report generated in ${CMAKE_BINARY_DIR}/coverage_report"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
