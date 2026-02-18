@@ -3,25 +3,26 @@
 set -euo pipefail
 
 echo "Updating packages..."
-sudo apt update -y
-sudo apt upgrade -y
+DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get upgrade -y
 
 echo "Installing development tools..."
-sudo apt install -y build-essential cmake git curl
+apt-get install -y build-essential cmake git curl
 
 echo "Installing Google Test..."
-sudo apt install -y libgtest-dev
+apt-get install -y libgtest-dev
 cd /usr/src/googletest
-sudo cmake .
-sudo make
-sudo make install
+cmake .
+make
+make install
 cd -
 
 echo "Installing code coverage tools..."
-sudo apt install -y lcov
+apt-get install -y lcov
 
 echo "Installing additional utilities..."
-sudo apt install -y vim tree
+apt-get install -y vim tree
 
 echo "Setting up project directory..."
 PROJECT_DIR="/home/vagrant/gtest_coverage_poc"
